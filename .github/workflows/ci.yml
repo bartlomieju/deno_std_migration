@@ -24,7 +24,7 @@ jobs:
           deno-version: nightly
 
       - name: Format
-        run: deno fmt --check --ignore=std/**/testdata,std/**/vendor,std/node_modules,std/hash/_wasm
+        run: deno fmt --check --ignore=std/node_modules,std/hash/_wasm
 
       - name: Lint
         run: deno lint --ignore=std/**/testdata,std/**/node_modules
