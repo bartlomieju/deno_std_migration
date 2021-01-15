@@ -27,7 +27,7 @@ jobs:
         run: deno fmt --check --ignore=**/testdata,**/vendor,node_modules,hash/_wasm
 
       - name: Lint
-        run: deno lint --ignore=**/testdata,**/node_modules
+        run: deno lint --unstable --ignore=**/testdata,**/node_modules
 
       # - name: Lint
       #   run: deno test
