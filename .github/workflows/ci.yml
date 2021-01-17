@@ -24,10 +24,10 @@ jobs:
           deno-version: nightly
 
       - name: Format
-        run: deno fmt --check --ignore=node/tests/node_modules --ignore=hash/_wasm
+        run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
 
       - name: Lint
-        run: deno lint --unstable --ignore=node/tests/node_modules --ignore=hash/_wasm
+        run: deno lint --unstable --ignore=node/tests/node_modules,hash/_wasm
 
       # - name: Lint
       #   run: deno test
