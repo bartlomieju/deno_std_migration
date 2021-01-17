@@ -24,12 +24,11 @@ jobs:
           deno-version: nightly
 
       - name: Format
-        run: |
-          deno fmt --check \
-            --ignore=hash/_wasm \
-            --ignore=node/node_modules \
+        run: deno fmt --check --ignore=std/node_modules,std/hash/_wasm
 
       - name: Lint
-        run: |
-          deno lint \
-            --ignore=node/tests/node_modules \
+        run: deno lint --ignore=std/**/testdata,std/**/node_modules
+
+      # - name: Lint
+      #   run: deno test
+
