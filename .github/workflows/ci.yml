@@ -3,8 +3,7 @@ name: ci
 on: [pull_request]
 
 jobs:
-  std:
-    name: deno_std-${{ matrix.os }}
+  test:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
