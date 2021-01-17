@@ -8,6 +8,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
+        deno_version: [stable, nightly]
         os: [macOS-latest, ubuntu-latest, windows-2019]
 
     steps:
@@ -20,7 +21,7 @@ jobs:
       - name: Install Deno
         uses: denolib/setup-deno@master
         with:
-          deno-version: nightly
+          deno-version: ${{ matrix.os }}
 
       - name: Test
         run: deno test --unstable --allow-all
