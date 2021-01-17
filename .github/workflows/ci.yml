@@ -24,7 +24,7 @@ jobs:
           deno-version: nightly
 
       - name: Test
-        run: deno test
+        run: deno test --unstable --allow-all
 
       - name: Format
         run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
