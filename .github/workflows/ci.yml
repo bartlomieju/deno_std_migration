@@ -23,6 +23,9 @@ jobs:
         with:
           deno-version: nightly
 
+      - name: Test
+        run: deno test
+
       - name: Format
         run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
 
