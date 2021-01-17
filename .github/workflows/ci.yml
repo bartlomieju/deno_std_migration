@@ -25,12 +25,11 @@ jobs:
       - name: Test
         run: deno test --unstable --allow-all
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
       - name: Format
         run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
 
       - name: Lint
         run: deno lint --unstable --ignore=node/tests/node_modules,hash/_wasm
-
-      # - name: Lint
-      #   run: deno test
-
