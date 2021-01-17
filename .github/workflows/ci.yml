@@ -21,7 +21,7 @@ jobs:
       - name: Install Deno
         uses: denolib/setup-deno@master
         with:
-          deno-version: ${{ matrix.os }}
+          deno-version: ${{ matrix.deno_version }}
 
       - name: Test
         run: deno test --unstable --allow-all
