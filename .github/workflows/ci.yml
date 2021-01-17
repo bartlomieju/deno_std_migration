@@ -24,14 +24,10 @@ jobs:
           deno-version: nightly
 
       - name: Format
-        run: |
-          deno fmt --check \
-            --ignore=node/tests/node_modules \
+        run: deno fmt --check --ignore=node/tests/node_modules
 
       - name: Lint
-        run: |
-          deno lint --unstable \
-            --ignore=node/tests/node_modules \
+        run: deno lint --unstable --ignore="node/tests/node_modules
 
       # - name: Lint
       #   run: deno test
