@@ -39,15 +39,11 @@ Deno.test({
     assertEquals(process.cwd(), Deno.cwd());
 
     const currentDir = Deno.cwd(); // to unchange current directory after this test
+    const tempDir = Deno.makeTempDirSync();
 
-    const moduleDir = path.dirname(path.fromFileUrl(import.meta.url));
-    process.chdir(path.resolve(moduleDir, ".."));
+    process.chdir(tempDir);
+    assertEquals(process.cwd(), tempDir);
 
-    assert(process.cwd().match(/\Wstd$/));
-    process.chdir("node");
-    assert(process.cwd().match(/\Wnode$/));
-    process.chdir("..");
-    assert(process.cwd().match(/\Wstd$/));
     process.chdir(currentDir); // to unchange current directory after this test
   },
 });
