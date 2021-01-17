@@ -42,7 +42,7 @@ Deno.test({
     const tempDir = Deno.makeTempDirSync();
 
     process.chdir(tempDir);
-    assertEquals(process.cwd(), Deno.realPathSync(tempDir));
+    assertEquals(Deno.realPathSync(process.cwd()), Deno.realPathSync(tempDir));
 
     process.chdir(currentDir); // to unchange current directory after this test
   },
