@@ -128,8 +128,8 @@ Deno.test({
 Deno.test({
   name: "process.env",
   fn() {
-    assertEquals(typeof process.env.PATH, "string");
-    assertEquals(typeof env.PATH, "string");
+    Deno.env.set("SECRET", "42");
+    assertEquals(process.env.SECRET, "42");
   },
 });
 
