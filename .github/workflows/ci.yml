@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        deno_version: [nightly]
+        deno-version: [nightly]
         os: [macOS-latest, ubuntu-latest, windows-2019]
 
     steps:
@@ -22,7 +22,7 @@ jobs:
       - name: Install Deno
         uses: denolib/setup-deno@master
         with:
-          deno-version: ${{ matrix.deno_version }}
+          deno-version: ${{ matrix.deno-version }}
 
       - name: Test
         run: deno test --unstable --allow-all
