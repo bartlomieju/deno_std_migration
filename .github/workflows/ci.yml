@@ -28,6 +28,17 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          submodules: false
+          persist-credentials: false
+
+      - name: Install Deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: nightly
+
       - name: Format
         run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
 
