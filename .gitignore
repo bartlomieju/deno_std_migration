@@ -1,0 +1,19 @@
+*.orig
+*.pyc
+*.swp
+
+/.idea/
+/.vscode/
+/hash/_wasm/target
+
+# Files that help ensure VSCode can work but we don't want checked into the
+# repo
+/node_modules
+/tsconfig.json
+
+# compiled wasm files
+wasi/testdata/snapshot_preview1/
+
+# MacOS generated files
+.DS_Store
+.DS_Store?

@@ -1,14 +1,15 @@
 name: ci
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
-  std:
-    name: deno_std-${{ matrix.os }}
+  test:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
+      fail-fast: false
       matrix:
+        deno-version: [nightly]
         os: [macOS-latest, ubuntu-latest, windows-2019]
 
     steps:
@@ -21,14 +22,27 @@ jobs:
       - name: Install Deno
         uses: denolib/setup-deno@master
         with:
+          deno-version: ${{ matrix.deno-version }}
+
+      - name: Test
+        run: deno test --unstable --allow-all
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          submodules: false
+          persist-credentials: false
+
+      - name: Install Deno
+        uses: denolib/setup-deno@master
+        with:
           deno-version: nightly
 
       - name: Format
-        run: deno fmt --check --ignore=std/node_modules,std/hash/_wasm
+        run: deno fmt --check --ignore=node/tests/node_modules,hash/_wasm
 
       - name: Lint
-        run: deno lint --ignore=std/**/testdata,std/**/node_modules
-
-      # - name: Lint
-      #   run: deno test
-
+        run: deno lint --unstable --ignore=node/tests/node_modules,hash/_wasm
