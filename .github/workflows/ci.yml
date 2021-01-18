@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        deno-version: [1.x, nightly]
+        deno-version: [nightly]
         os: [macOS-latest, ubuntu-latest, windows-2019]
 
     steps:
